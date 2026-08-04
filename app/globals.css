@@ -2,221 +2,209 @@
 
 /* ─── Design Tokens ───────────────────────────────────────────── */
 :root {
-  /* Colors */
-  --color-bg-primary:        #f4f1eb;
-  --color-bg-secondary:      #edeae3;
-  --color-bg-card:           #faf9f6;
-  --color-bg-card-hover:     #ffffff;
-  --color-border:            rgba(0, 0, 0, 0.07);
-  --color-border-dark:       rgba(0, 0, 0, 0.15);
+  --color-bg-primary:     #f4f1eb;
+  --color-bg-secondary:   #edeae3;
+  --color-bg-card:        #ffffff;
+  --color-bg-code:        #1a1a1a;
 
-  --color-text-primary:      #111110;
-  --color-text-secondary:    #6b6b6b;
-  --color-text-muted:        #aaaaaa;
+  --color-border:         rgba(0, 0, 0, 0.1);
+  --color-border-strong:  rgba(0, 0, 0, 0.2);
 
-  --color-accent-primary:    #5bcea0;
-  --color-accent-dark:       #3daa7e;
-  --color-accent-bg:         rgba(91, 206, 160, 0.10);
-  --color-accent-border:     rgba(91, 206, 160, 0.22);
-  --color-accent-black:      #111110;
-  --color-accent-success:    #3daa7e;
-  --color-accent-warning:    #c97b2e;
-  --color-accent-error:      #c94040;
+  --color-text-primary:   #0e0f0f;
+  --color-text-secondary: #5a5a5a;
+  --color-text-muted:     #999999;
+  --color-text-inverse:   #ffffff;
 
-  /* Radii */
-  --radius-sm:   6px;
-  --radius-md:   10px;
-  --radius-lg:   16px;
-  --radius-xl:   22px;
+  --color-accent:         #5bcea0;
+  --color-accent-dark:    #3daa7e;
+  --color-accent-bg:      rgba(91, 206, 160, 0.12);
+  --color-accent-border:  rgba(91, 206, 160, 0.3);
+
+  --color-green:          #3daa7e;
+  --color-amber:          #c97b2e;
+  --color-red:            #c94040;
+
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  12px;
   --radius-pill: 9999px;
 
-  /* Spacing */
-  --space-xs:  4px;
-  --space-sm:  8px;
-  --space-md:  16px;
-  --space-lg:  24px;
-  --space-xl:  40px;
-  --space-2xl: 64px;
-  --space-3xl: 96px;
-
-  /* Fluid type — clamp(min, preferred, max) */
   --text-xs:   clamp(0.65rem, 1vw,   0.72rem);
   --text-sm:   clamp(0.78rem, 1.4vw, 0.875rem);
   --text-base: clamp(0.9rem,  1.8vw, 1rem);
   --text-lg:   clamp(1rem,    2vw,   1.125rem);
-  --text-xl:   clamp(1.2rem,  2.5vw, 1.4rem);
-  --text-2xl:  clamp(1.6rem,  3.5vw, 2rem);
-  --text-3xl:  clamp(2.2rem,  5vw,   3.5rem);
-  --text-4xl:  clamp(3rem,    7vw,   5.5rem);
+  --text-xl:   clamp(1.25rem, 2.5vw, 1.5rem);
+  --text-2xl:  clamp(1.6rem,  3.5vw, 2.25rem);
+  --text-3xl:  clamp(2.5rem,  5vw,   4rem);
+  --text-4xl:  clamp(3rem,    7vw,   6rem);
 }
 
 /* ─── Reset ───────────────────────────────────────────────────── */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: var(--color-bg-primary);
+  background: var(--color-bg-primary);
   color: var(--color-text-primary);
   font-family: var(--font-geist-sans), "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ─── Grid background ─────────────────────────────────────────── */
+/* ─── Grid background (same as Atomity site) ─────────────────── */
 .grid-bg {
   background-image:
-    linear-gradient(rgba(0,0,0,0.033) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.033) 1px, transparent 1px);
-  background-size: 52px 52px;
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 
-/* ─── Highlight box (keyword callout) ─────────────────────────── */
+/* ─── Keyword highlight box (like "SOVEREIGN" on their site) ──── */
 .highlight-box {
-  background: var(--color-accent-primary);
-  color: var(--color-accent-black);
+  background: var(--color-accent);
+  color: var(--color-text-primary);
   display: inline;
-  padding: 2px 10px 4px;
-  border-radius: 4px;
+  padding: 1px 10px 4px;
+  border-radius: 3px;
 }
 
-/* ─── Card — with native CSS nesting ─────────────────────────── */
-.card {
+/* ─── Step badge (01, 02, 03...) ─────────────────────────────── */
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  color: var(--color-text-primary);
+  font-size: var(--text-xs);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+/* ─── Data card (no shadow, just border) ─────────────────────── */
+.data-card {
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   container-type: inline-size;
-  container-name: metric-card;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+  container-name: data-card;
+  transition: border-color 0.2s ease;
 
-  &:hover {
-    border-color: var(--color-border-dark);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07);
-    transform: translateY(-2px);
-  }
+  &:hover { border-color: var(--color-border-strong); }
 
-  /* Container query — compact layout on narrow cards */
-  @container metric-card (max-width: 200px) {
-    .card-value  { font-size: var(--text-xl); }
-    .card-label  { display: none; }
+  /* Container query: compact on narrow containers */
+  @container data-card (max-width: 200px) {
+    .card-stat { font-size: var(--text-xl); }
   }
 }
 
-/* ─── Insight card — with native CSS nesting ──────────────────── */
-.insight-card {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  border-inline-start: 3px solid var(--color-accent-primary);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+/* ─── Cluster row ─────────────────────────────────────────────── */
+.cluster-row {
+  border-bottom: 1px solid var(--color-border);
+  transition: background 0.15s ease;
 
-  &:hover {
-    transform: translateX(5px);
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
-    background: var(--color-bg-card-hover);
-  }
+  &:last-child { border-bottom: none; }
+  &:hover { background: rgba(91, 206, 160, 0.05); }
 }
 
-/* ─── Cloud node hexagon ──────────────────────────────────────── */
-.cloud-node {
-  border: 2px solid var(--color-accent-primary);
-  border-radius: 24% 20% 24% 20% / 20% 24% 20% 24%;
-  background: var(--color-accent-bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  inline-size: clamp(64px, 9vw, 84px);
-  block-size:  clamp(64px, 9vw, 84px);
-  transition: background 0.2s ease, border-color 0.2s ease;
-
-  &:hover {
-    background: rgba(91, 206, 160, 0.16);
-    border-color: var(--color-accent-dark);
-  }
-}
-
-/* ─── Pill / badge ────────────────────────────────────────────── */
+/* ─── Pill ────────────────────────────────────────────────────── */
 .pill {
   display: inline-flex;
   align-items: center;
-  padding: 4px 12px;
+  padding: 3px 10px;
   border-radius: var(--radius-pill);
   font-size: var(--text-xs);
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   white-space: nowrap;
 
   &.pill-outline {
-    border: 1px solid var(--color-border-dark);
+    border: 1px solid var(--color-border-strong);
     color: var(--color-text-secondary);
-    background: transparent;
   }
 
   &.pill-green {
-    background: var(--color-accent-primary);
-    color: var(--color-accent-black);
-    border: none;
+    background: var(--color-accent);
+    color: var(--color-text-primary);
   }
 
   &.pill-ghost {
     background: var(--color-accent-bg);
-    color: var(--color-accent-dark);
+    color: var(--color-green);
     border: 1px solid var(--color-accent-border);
+  }
+
+  &.pill-dark {
+    background: var(--color-text-primary);
+    color: var(--color-text-inverse);
   }
 }
 
-/* ─── Primary button ──────────────────────────────────────────── */
+/* ─── Status dot ─────────────────────────────────────────────── */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  &.dot-green { background: var(--color-green); }
+  &.dot-amber { background: var(--color-amber); }
+  &.dot-red   { background: var(--color-red);   }
+}
+
+/* ─── Button ─────────────────────────────────────────────────── */
 .btn-primary {
-  background: var(--color-accent-primary);
-  color: var(--color-accent-black);
+  background: var(--color-accent);
+  color: var(--color-text-primary);
   border: none;
   border-radius: var(--radius-pill);
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-weight: 800;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   font-size: var(--text-xs);
   padding: 10px 22px;
   cursor: pointer;
-  transition: background 0.15s ease, transform 0.15s ease;
+  transition: background 0.15s ease, transform 0.1s ease;
 
-  &:hover {
-    background: var(--color-accent-dark);
-    transform: scale(1.02);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-accent-primary);
-    outline-offset: 2px;
-  }
+  &:hover { background: var(--color-accent-dark); transform: scale(1.02); }
+  &:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
 }
 
-/* ─── Shimmer skeleton ────────────────────────────────────────── */
+/* ─── Monospace code label ────────────────────────────────────── */
+.mono {
+  font-family: "Geist Mono", "Courier New", monospace;
+  font-size: var(--text-xs);
+}
+
+/* ─── Bar track ──────────────────────────────────────────────── */
+.bar-track {
+  background: rgba(91, 206, 160, 0.12);
+  border-radius: 3px 3px 0 0;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* ─── Shimmer ────────────────────────────────────────────────── */
 @keyframes shimmer {
   0%   { background-position: -200% 0; }
   100% { background-position:  200% 0; }
 }
 
 .shimmer {
-  background: linear-gradient(
-    90deg,
-    #e8e5de 0%,
-    #f4f1eb 50%,
-    #e8e5de 100%
-  );
+  background: linear-gradient(90deg, #e8e5de 0%, #f4f1eb 50%, #e8e5de 100%);
   background-size: 200% 100%;
   animation: shimmer 1.6s ease-in-out infinite;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
-/* ─── Accessibility ───────────────────────────────────────────── */
+/* ─── Reduced motion ─────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
-    animation-duration:        0.01ms !important;
+    animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration:       0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
