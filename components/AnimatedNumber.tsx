@@ -6,6 +6,7 @@ import { useInView } from "framer-motion";
 interface AnimatedNumberProps {
   value: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 function parseValue(val: string): { prefix: string; num: number; suffix: string } {
@@ -28,7 +29,7 @@ function formatNumber(num: number, original: string): string {
   return Math.round(num).toString();
 }
 
-export default function AnimatedNumber({ value, className }: AnimatedNumberProps) {
+export default function AnimatedNumber({ value, className, style }: AnimatedNumberProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   const [display, setDisplay] = useState("0");
@@ -60,7 +61,7 @@ export default function AnimatedNumber({ value, className }: AnimatedNumberProps
   }, [isInView, num, value]);
 
   return (
-    <span ref={ref} className={className}>
+    <span ref={ref} className={className} style={style}>
       {prefix}{display}{suffix}
     </span>
   );

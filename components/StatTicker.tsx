@@ -48,8 +48,7 @@ export default function StatTicker() {
                 lineHeight: 1,
                 letterSpacing: "-0.03em",
                 color: "var(--color-text-primary)",
-                fontVariantNumeric: "tabular-nums",
-              } as React.CSSProperties}
+              }}
             />
             <span style={{
               fontSize: "var(--text-xs)",
