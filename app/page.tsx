@@ -1,5 +1,6 @@
 import OptimizationSection from "@/components/OptimizationSection";
 import GridBackground from "@/components/GridBackground";
+import StatTicker from "@/components/StatTicker";
 
 export default function Home() {
   return (
@@ -49,19 +50,16 @@ export default function Home() {
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
-          minBlockSize: "80vh",
+          minBlockSize: "72vh",
           paddingBlock: "clamp(80px, 10vw, 120px)",
           paddingInline: "clamp(24px, 5vw, 80px)",
         }}
       >
         <GridBackground />
-
         <div style={{ position: "relative", zIndex: 1, maxInlineSize: "820px", marginInline: "auto", width: "100%" }}>
-          {/* Eyebrow */}
           <p style={{ fontSize: "var(--text-xs)", fontWeight: 700, color: "var(--color-text-muted)", textTransform: "uppercase", letterSpacing: "0.12em", marginBlockEnd: "20px" }}>
             Kubernetes Cost Intelligence
           </p>
-
           <h1
             id="hero-heading"
             style={{
@@ -79,7 +77,6 @@ export default function Home() {
             <br />
             <span style={{ color: "var(--color-text-secondary)" }}>One view.</span>
           </h1>
-
           <p style={{
             marginBlockStart: "clamp(20px, 3vw, 28px)",
             fontSize: "var(--text-base)",
@@ -93,14 +90,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Main feature section ── */}
+      {/* ── Animated stat ticker ── */}
+      <StatTicker />
+
+      {/* ── Main feature section (the deliverable) ── */}
       <OptimizationSection />
 
       {/* ── Footer ── */}
       <footer
         role="contentinfo"
         style={{
-          paddingBlock: "clamp(24px, 3vw, 36px)",
+          paddingBlock: "clamp(20px, 3vw, 32px)",
           paddingInline: "clamp(24px, 5vw, 80px)",
           borderTop: "1px solid var(--color-border)",
           display: "flex",
@@ -116,6 +116,7 @@ export default function Home() {
         </div>
         <p style={{ color: "var(--color-text-muted)", fontSize: "var(--text-xs)" }}>© 2025 Atomity · Cloud Optimization Platform</p>
       </footer>
+
     </main>
   );
 }
